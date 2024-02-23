@@ -11,8 +11,9 @@ const connect = () => {
   conn.setEncoding("utf8");
 
   // Event listener for incoming data
-  conn.on('data', (data) => {
-    console.log('Message from server:', data);
+  conn.on('connect', () => {
+    console.log("Successfully connected to game server");
+    conn.write("Name: MAP");
   });
 
   return conn;
