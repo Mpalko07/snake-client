@@ -1,22 +1,43 @@
+const { IP, PORT } = require("./constants");
 const net = require("net");
 
-// establishes a connection with the game server
 const connect = () => {
   const conn = net.createConnection({
-    host: '172.22.181.232',
-    port: '50541',
+    host: IP,
+    port: PORT,
   });
 
-  // interpret incoming data as text
   conn.setEncoding("utf8");
 
-  // Event listener for incoming data
   conn.on('connect', () => {
     console.log("Successfully connected to game server");
     conn.write("Name: MAP");
-    // setInterval(() => {
-    //   conn.write("Move: up");
-    // }, 50); 
+    
+    let currentDirection = "up"; // Define initial direction
+
+    const sendSnakeMovement = () => {
+      conn.write(`Move: ${currentDirection}`);
+    };
+
+    setInterval(sendSnakeMovement, 500);
+
+    const stdin = process.stdin;
+    stdin.setRawMode(true);
+    stdin.setEncoding("utf8");
+    stdin.resume();
+    stdin.on("data", (key) => {
+      if (key === '\u0003') {
+        process.exit();
+      } else if (key === 'w') {
+        currentDirection = "up";
+      } else if (key === 'a') {
+        currentDirection = "left";
+      } else if (key === 's') {
+        currentDirection = "down";
+      } else if (key === 'd') {
+        currentDirection = "right";
+      }
+    });
   });
 
   return conn;

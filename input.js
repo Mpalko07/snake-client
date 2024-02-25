@@ -4,9 +4,9 @@ const setupInput = (conn) => {
   connection = conn;
   const stdin = process.stdin;
   stdin.setRawMode(true);
-  stdin.setEncoding("utf8");
+  stdin.setEncoding('utf8');
   stdin.resume();
-  stdin.on("data", handleUserInput);
+  stdin.on('data', handleUserInput);
   return stdin;
 };
 
@@ -22,11 +22,8 @@ const handleUserInput = function (key) {
   } else if (key === 'd') {
     connection.write("Move: right");
   } else if (key === '1') {
-    connection.write("Say: ur going down");
-  } else if (key === '2') {
     connection.write("Say: sssssee ya!");
   }
 };
 
-
-module.exports = { setupInput, handleUserInput };
+module.exports = { setupInput };
