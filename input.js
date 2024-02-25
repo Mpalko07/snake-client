@@ -23,6 +23,10 @@ const handleUserInput = function (key) {
     connection.write("Move: right");
   } else if (key === '1') {
     connection.write("Say: sssssee ya!");
+  } else if (key === '2') {
+    connection.write("Say: nomnomnom");
+  } else if (key === '3') {
+    connection.write("Say: ready to lose?");
   }
 };
 
