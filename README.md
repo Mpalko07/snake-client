@@ -22,3 +22,8 @@ Before you can run this client, you will need to be running the server side whic
 - 2: nomnomnom
 - 3: ready to lose?
 - Control + C: to exit game
+
+## Let's Play
+![Snake](https://github.com/Mpalko07/snake-client/blob/master/snek.png)
+
+![Commands](https://github.com/Mpalko07/snake-client/blob/master/commands.png)
